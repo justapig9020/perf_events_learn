@@ -12,4 +12,4 @@ test: all
 		./main
 
 clean:
-	rm -f main
+	rm -f main perf.data*
