@@ -7,7 +7,7 @@ input.dat:
 	dd if=/dev/urandom of=input.dat bs=8M count=1
 
 test: all
-	sudo perf stat ./main
+	sudo perf record -g ./main
 
 clean:
 	rm -f main
