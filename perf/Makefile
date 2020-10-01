@@ -7,7 +7,9 @@ input.dat:
 	dd if=/dev/urandom of=input.dat bs=8M count=1
 
 test: all
-	sudo perf record -g ./main
+	sudo perf record -g \
+		-e cycles,instructions,L1-dcache-load-misses \
+		./main
 
 clean:
 	rm -f main
