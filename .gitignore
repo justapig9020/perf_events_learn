@@ -1,7 +1,9 @@
 *
+!*/
 !*.c
 !*.h
 !*.sh
 !*.py
+!README.md
 !.gitignore
 !Makefile
