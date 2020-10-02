@@ -8,6 +8,7 @@
 
 static int32_t a[N][N];
 static int32_t b[N][N];
+static int32_t bT[N][N];
 static int32_t c[N][N];
 
 __attribute__((noinline))
@@ -26,12 +27,23 @@ static void load_matrix() {
 }
 
 __attribute__((noinline))
+static void transpose() {
+  size_t i, j;
+  for (i = 0; i < N; ++i) {
+    for (j = 0; j < N; ++j) {
+      bT[i][j] = b[j][i];
+    }
+  }
+}
+
+__attribute__((noinline))
 static void mult() {
   size_t i, j, k;
+  transpose();
   for (i = 0; i < N; ++i) {
     for (j = 0; j < N; ++j) {
       for (k = 0; k < N; ++k) {
-        c[i][j] += a[i][k] * b[k][j];
+        c[i][j] += a[i][k] * bT[j][k];
       }
     }
   }
